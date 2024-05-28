@@ -14,7 +14,7 @@ const TaskList = (props) => {
                     id="todo-1"
                     type="checkbox"
                     checked={todo.completed}
-                    onChange={() => props.changeTodoState(todo)}
+                    onChange={() => props.editTask(todo)}
                   />
                   {todo.info}
                 </div>

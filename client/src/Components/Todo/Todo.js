@@ -56,15 +56,15 @@ const Todo = () => {
     setMode(2);
   };
 
-  const changeTodoState = (todo) => {
-    let currentList = [...todoList];
-    currentList.forEach((task) => {
-      if (task.id == todo.id) {
-        task.completed = !task.completed;
-      }
-    });
-    setTodoList(currentList);
-  };
+  // const changeTodoState = (todo) => {
+  //   let currentList = [...todoList];
+  //   currentList.forEach((task) => {
+  //     if (task.id == todo.id) {
+  //       task.completed = !task.completed;
+  //     }
+  //   });
+  //   setTodoList(currentList);
+  // };
 
   const selectTodo = (todoId) => {
     const todo = todoList.find((todo) => {
@@ -97,11 +97,21 @@ const Todo = () => {
   };
 
   const deleteTask = (taskId) => {
-    let taskList = todoList.filter((todo) => {
-      return todo.id != taskId;
-    });
-    setTodoList(taskList);
+    // let taskList = todoList.filter((todo) => {
+    //   return todo.id != taskId;
+    // });
+    // setTodoList(taskList);
+    axios.delete(`${getBaseURL()}api/todos/delete/${taskId}`)
+    .then((res) => {
+      console.log('Deleetd task');
+      setUpdateTodo((todoFlag => !todoFlag));
+    })
+    .catch((err) => {
+      console.log(`Sorry couldn't delete`);
+    })
   };
+
+  
   return (
     <div>
       {mode == 0 ? (
@@ -118,7 +128,8 @@ const Todo = () => {
           />
           <TaskList
             todoList={todoList}
-            changeTodoState={changeTodoState}
+            // changeTodoState={changeTodoState}
+            editTask = {editTask}
             selectTodo={selectTodo}
             deleteTask={deleteTask}
           />

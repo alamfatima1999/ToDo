@@ -13,6 +13,8 @@ const Todo = () => {
   const [editTodo, setEditTodo] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState({});
   const [updateTodo, setUpdateTodo] = useState({});
+  const [activeTasks, setActiveTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   //0-> all tasks will be displayed,
   //1-> Active Tasks will be displayed
@@ -50,9 +52,26 @@ const Todo = () => {
     setMode(0);
   };
   const getActiveTasks = () => {
+    axios.get(`${getBaseURL()}api/activeTasks/`)
+    .then((res) => {
+      let data = res.data;
+      setActiveTasks(data);
+    })
+    .catch((err) => {
+      console.log(`Sorry, Couldn't fetch active tasks`);
+    });
     setMode(1);
   };
   const getCompletedTasks = () => {
+    axios.get(`${getBaseURL()}api/completedTasks/`)
+    .then((res) => {
+      let data = res.data;
+      setCompletedTasks(data);
+    })
+    .catch((err) => {
+      console.log(`Sorry, Couldn't fetch completed tasks`);
+    });
+
     setMode(2);
   };
 
@@ -82,8 +101,19 @@ const Todo = () => {
     // });
     // setTodoList(currentList);
     // setEditTodo(false);
-    const todoId = selectedTodo._id;
-    const updatedData = {info: todo.info, completed: todo.completed};
+    let todoId;
+    let updatedData = {};
+    //for changing the completed flag (checkbox)
+    if(todo._id!==undefined){
+      todoId = todo._id;
+      updatedData = {info: todo.info, completed: !todo.completed};
+      
+    }else{
+      //for updating the info (update button)
+      todoId = selectedTodo._id;
+      updatedData = {info: todo.info, completed: todo.completed};
+    }
+    // const updatedData = {info: todo.info, completed: todo.completed};
     axios.post(`${getBaseURL()}api/todos/update/${todoId}`, {...updatedData})
     .then((res) => {
       console.log(`updated successfully`);
@@ -91,7 +121,7 @@ const Todo = () => {
       setEditTodo(false);
     })
     .catch((err) => {
-      console.log(`Sorry coulnd't update todo`);
+      console.log(`Sorry couldn't update todo`);
     });
     
   };
@@ -135,15 +165,11 @@ const Todo = () => {
           />
         </>
       ) : mode == 1 ? (
-        <ActiveTasks todoList={todoList}
-        selectTodo={selectTodo}
-        deleteTask={deleteTask}
+        <ActiveTasks activeTasks={activeTasks}
         getCompletedTasks={getCompletedTasks}
         getAllTasks={getAllTasks}/>
       ) : mode==2?(
-        <CompletedTasks todoList={todoList}
-        selectTodo={selectTodo}
-        deleteTask={deleteTask}
+        <CompletedTasks completedTasks={completedTasks}
         getActiveTasks={getActiveTasks}
         getAllTasks={getAllTasks}/>
       ):null}

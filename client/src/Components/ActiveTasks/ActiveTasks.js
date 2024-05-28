@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const ActiveTasks = (props) => {
-  const todoList = props.todoList;
+  const activeTasks = props.activeTasks;
   return (
     <>
     <button onClick={props.getAllTasks}>All Tasks</button>
     <button onClick={props.getCompletedTasks}>Completed Tasks</button>
     <div>
       <ul>
-        {todoList
-          .filter((todo) => !todo.completed)
+        {activeTasks
           .map((todo) => {
             return (
               <li>

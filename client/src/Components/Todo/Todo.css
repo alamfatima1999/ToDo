@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.todo-container {
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.todo-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .todo-button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+} */
+
+.todo-button {
+    padding: 10px 10px; /* Adjust padding for desired button size */
+    cursor: pointer;
+    border: none; /* Add your preferred border style */
+    background-color: green; /* Add your preferred background color */
+    color: white; /* Add your preferred text color */
+    margin: 0 5px;
+    border-radius: 5px; /* Optional: add rounded corners */
+    width: 140px
+}
+
+.todo-button:first-child {
+    margin-left: 0;
+}
+
+.todo-button:last-child {
+    margin-right: 0;
+}
+
+
+.cancel-button {
+    padding: 5px 12px;
+    cursor: pointer;
+    border: none;
+    background-color: #FF0000;
+    color: white;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin: 10px;
+}

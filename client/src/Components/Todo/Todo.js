@@ -10,7 +10,7 @@ import "./Todo.css";
 
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
-  const [editTodo, setEditTodo] = useState(false);
+  const [editFlag, setEditFlag] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState({});
   const [updateTodo, setUpdateTodo] = useState({});
   const [activeTasks, setActiveTasks] = useState([]);
@@ -45,7 +45,7 @@ const Todo = () => {
 
 
   const cancelUpdate = () => {
-    setEditTodo(false);
+    setEditFlag(false);
   }
 
   const getAllTasks = () => {
@@ -90,7 +90,7 @@ const Todo = () => {
       return todoId == todo._id;
     });
     setSelectedTodo(todo);
-    setEditTodo(true);
+    setEditFlag(true);
   };
   const editTask = (todo) => {
     // let currentList = [...todoList];
@@ -118,7 +118,7 @@ const Todo = () => {
     .then((res) => {
       console.log(`updated successfully`);
       setUpdateTodo((todoFlag => !todoFlag));
-      setEditTodo(false);
+      setEditFlag(false);
     })
     .catch((err) => {
       console.log(`Sorry couldn't update todo`);
@@ -150,7 +150,7 @@ const Todo = () => {
             editTask={editTask}
             mode={mode}
             selectedTodo={selectedTodo}
-            editTodo={editTodo}
+            editFlag={editFlag}
             insertTodo={insertTodo}
             getCompletedTasks={getCompletedTasks}
             getActiveTasks={getActiveTasks}

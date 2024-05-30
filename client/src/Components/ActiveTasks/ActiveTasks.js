@@ -4,8 +4,10 @@ const ActiveTasks = (props) => {
   const activeTasks = props.activeTasks;
   return (
     <>
-    <button onClick={props.getAllTasks}>All Tasks</button>
-    <button onClick={props.getCompletedTasks}>Completed Tasks</button>
+    <div className="button-container"> 
+    <button className = "todo-button" onClick={props.getAllTasks}>All Tasks</button>
+    <button className = "todo-button" onClick={props.getCompletedTasks}>Completed Tasks</button>
+    </div>
     <div>
       <ul>
         {activeTasks

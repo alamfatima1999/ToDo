@@ -1,32 +1,32 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .todo-container {
-    width: 450px;
-    margin: 0 auto;
-    text-align: center;
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .todo-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 .button-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* .todo-button {
@@ -37,32 +37,62 @@ h1 {
 } */
 
 .todo-button {
-    padding: 10px 10px; /* Adjust padding for desired button size */
-    cursor: pointer;
-    border: none; /* Add your preferred border style */
-    background-color: green; /* Add your preferred background color */
-    color: white; /* Add your preferred text color */
-    margin: 0 5px;
-    border-radius: 5px; /* Optional: add rounded corners */
-    width: 140px
+  padding: 10px 10px; /* Adjust padding for desired button size */
+  cursor: pointer;
+  border: none; /* Add your preferred border style */
+  background-color: green; /* Add your preferred background color */
+  color: white; /* Add your preferred text color */
+  margin: 0 5px;
+  border-radius: 5px; /* Optional: add rounded corners */
+  width: 140px;
 }
 
 .todo-button:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .todo-button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
-
 .cancel-button {
-    padding: 5px 12px;
-    cursor: pointer;
-    border: none;
-    background-color: #FF0000;
-    color: white;
-    border-radius: 5px;
-    white-space: nowrap;
-    margin: 10px;
+  padding: 5px 12px;
+  cursor: pointer;
+  border: none;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 5px;
+  white-space: nowrap;
+  margin: 10px;
+}
+
+.btn-modify {
+  background-color: #24a0ed;
+  color: white;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+.btn-delete {
+  background-color: #ff0000;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.todo-list-container {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todo-checkbox {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin-right: 7px;
 }

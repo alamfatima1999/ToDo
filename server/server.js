@@ -17,9 +17,9 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on  port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server is running on  port ${port}`);
+// });
 
 const dbConfig = require("./config/database.config.js");
 
@@ -49,3 +49,4 @@ mongoose
 app.use("/api/todos", todoRoutes);
 app.use("/api/activeTasks", activeTasksRoutes);
 app.use("/api/completedTasks", completedTasksRoutes);
+
